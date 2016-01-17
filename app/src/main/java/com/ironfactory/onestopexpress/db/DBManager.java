@@ -6,12 +6,14 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.ironfactory.onestopexpress.Global;
 import com.ironfactory.onestopexpress.entities.OptionEntity;
 import com.ironfactory.onestopexpress.entities.PersonEntity;
 import com.ironfactory.onestopexpress.entities.ProductEntity;
 import com.ironfactory.onestopexpress.entities.RoomEntity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by IronFactory on 2016. 1. 12..
@@ -154,25 +156,23 @@ public class DBManager extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<PersonEntity> getPerson(int roomNum, int personNum) {
+    public PersonEntity getPerson(int roomNum, int personNum) {
         String command = "SELECT * FROM " + PERSON_NUM_TABLE_NAME + " WHERE " + COL_ROOM_SIZE + " = " + roomNum + " AND " + COL_NUM + " = " + personNum + ";";
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(command, null);
-        ArrayList<PersonEntity> personEntities = new ArrayList<>();
-        while (cursor.moveToNext()) {
-            int roomSize = cursor.getInt(0);
-            String name = cursor.getString(1);
-            int price = cursor.getInt(2);
-            int num = cursor.getInt(3);
+        PersonEntity personEntity = new PersonEntity();
+        cursor.moveToFirst();
+        int roomSize = cursor.getInt(0);
+        String name = cursor.getString(1);
+        int price = cursor.getInt(2);
+        int num = cursor.getInt(3);
 
-            PersonEntity personEntity = new PersonEntity();
-            personEntity.setRoomNum(roomSize);
-            personEntity.setName(name);
-            personEntity.setPrice(price);
-            personEntity.setNum(num);
-            personEntities.add(personEntity);
-        }
-        return personEntities;
+        personEntity.setRoomNum(roomSize);
+        personEntity.setName(name);
+        personEntity.setPrice(price);
+        personEntity.setNum(num);
+
+        return personEntity;
     }
 
 
@@ -211,6 +211,24 @@ public class DBManager extends SQLiteOpenHelper {
             optionEntity.setIsSelected(false);
         }
         return optionEntities;
+    }
+
+
+    public HashMap<String, OptionEntity> getOptionToMap() {
+        String command = "SELECT * FROM " + OPTION_TABLE_NAME + ";";
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(command, null);
+        HashMap<String, OptionEntity> optionHash = new HashMap<>();
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(0);
+
+            OptionEntity optionEntity = new OptionEntity();
+            optionEntity.setName(name);
+            optionEntity.setIsSelected(false);
+
+            optionHash.put(name, optionEntity);
+        }
+        return optionHash;
     }
 
 
@@ -325,23 +343,23 @@ public class DBManager extends SQLiteOpenHelper {
 
 
         OptionEntity optionEntity = new OptionEntity();
-        optionEntity.setName("사무실이사");
+        optionEntity.setName(Global.OFFICE);
         insertOption(optionEntity);
-        optionEntity.setName("아파트/주택");
+        optionEntity.setName(Global.APARTMENT);
         insertOption(optionEntity);
-        optionEntity.setName("사다리차");
+        optionEntity.setName(Global.RADDER);
         insertOption(optionEntity);
-        optionEntity.setName("운반작업");
+        optionEntity.setName(Global.MOVE);
         insertOption(optionEntity);
-        optionEntity.setName("에어컨");
+        optionEntity.setName(Global.AIR_CONDITIONAL);
         insertOption(optionEntity);
-        optionEntity.setName("시스템헹거");
+        optionEntity.setName(Global.SYSTEM_HANGER);
         insertOption(optionEntity);
-        optionEntity.setName("붙박이장");
+        optionEntity.setName(Global.CLOSET);
         insertOption(optionEntity);
-        optionEntity.setName("흙/돌침대");
+        optionEntity.setName(Global.BED);
         insertOption(optionEntity);
-        optionEntity.setName("손없는날/주말");
+        optionEntity.setName(Global.BUSY);
         insertOption(optionEntity);
     }
 }

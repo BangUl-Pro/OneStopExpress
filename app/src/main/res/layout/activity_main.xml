@@ -1,14 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:id="@+id/activity_main_container">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/activity_main_option"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="옵션 별도"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/activity_main_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="2"
+            android:text="0"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="이사평수"/>
+
+
+        <Spinner
+            android:id="@+id/activity_main_room_size"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="가족 수"/>
+
+
+        <EditText
+            android:id="@+id/activity_main_person_num"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
 
     <com.ironfactory.onestopexpress.controllers.views.ProductGridView
         android:id="@+id/activity_main_product"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="옵션"/>
+
+
+        <ToggleButton
+            android:id="@+id/activity_main_radder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="사다리차"
+            android:textOff="사다리차"/>
+
+
+        <ToggleButton
+            android:id="@+id/activity_main_move"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="운반작업"
+            android:textOff="운반작업"/>
+
+
+        <ToggleButton
+            android:id="@+id/activity_main_air_conditional"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="에어컨"
+            android:textOff="에어컨"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/activity_main_system_hanger"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="시스템헹거"
+            android:textOff="시스템헹거"/>
+
+
+        <ToggleButton
+            android:id="@+id/activity_main_closet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="붙박이장"
+            android:textOff="붙박이장"/>
+
+
+        <ToggleButton
+            android:id="@+id/activity_main_bed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="흙/돌침대"
+            android:textOff="흙/돌침대"/>
+
+
+        <ToggleButton
+            android:id="@+id/activity_main_busy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="손없는날/기타"
+            android:textOff="손없는날/기타"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="옵션"/>
+
+
+        <Button
+            android:id="@+id/activity_main_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="사다리차"
+            android:textOff="사다리차"/>
+
+
+        <Button
+            android:id="@+id/activity_main_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="운반작업"
+            android:textOff="운반작업"/>
+
+
+        <Button
+            android:id="@+id/activity_main_equal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="에어컨"
+            android:textOff="에어컨"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/activity_main_submit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="확인"
+            android:layout_weight="1"/>
+
+
+        <Button
+            android:id="@+id/activity_main_detail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="상세견적 받아보기"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/activity_main_office"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="사무실이사"
+            android:textOff="사무실이사"/>
+
+
+        <ToggleButton
+            android:id="@+id/activity_main_apartment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:textOn="아파트/주택"
+            android:textOff="아파트/주택"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

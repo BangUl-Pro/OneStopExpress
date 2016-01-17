@@ -16,6 +16,7 @@ public class ProductGridView extends GridView {
 
     private ArrayList<ProductEntity> productEntities;
     private OnAddProduct handler;
+    private ProductGridAdapter adapter;
 
     public ProductGridView(Context context) {
         super(context);
@@ -57,16 +58,24 @@ public class ProductGridView extends GridView {
         handler = (OnAddProduct) context;
 
         productEntities = new ArrayList<>();
-        setNumColumns(AUTO_FIT);
-        setColumnWidth(100);
+        setNumColumns(4);
+        setColumnWidth(200);
         setVerticalSpacing(10);
         setHorizontalSpacing(10);
-        setAdapter(new ProductGridAdapter(productEntities, handler));
+        adapter = new ProductGridAdapter(productEntities, handler);
+        setAdapter(adapter);
+    }
+
+
+    public void setProductEntities(ArrayList<ProductEntity> productEntities) {
+        this.productEntities = productEntities;
+        adapter.setProductEntities(productEntities);
     }
 
 
 
     public interface OnAddProduct {
         void onAdd(ProductEntity productEntity);
+        void onRemove(ProductEntity productEntity);
     }
 }

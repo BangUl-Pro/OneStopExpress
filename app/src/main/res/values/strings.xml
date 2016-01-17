@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">OneStopExpress</string>
     <string name="add">추가</string>
+    <string name="remove">삭제</string>
 </resources>
