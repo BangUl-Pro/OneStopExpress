@@ -3,4 +3,8 @@
     <color name="orange">#FFBB00</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="btn_main">#a8d18d</color>
+    <color name="btn_sub">#fdefca</color>
+    <color name="background">#ebe8df</color>
 </resources>

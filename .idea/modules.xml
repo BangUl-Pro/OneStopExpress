@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/OneStopExpress.iml" filepath="$PROJECT_DIR$/OneStopExpress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FirstExpress.iml" filepath="$PROJECT_DIR$/FirstExpress.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

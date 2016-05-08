@@ -1,4 +1,4 @@
-package com.ironfactory.onestopexpress.entities;
+package com.ironfactory.first_express.entities;
 
 /**
  * Created by IronFactory on 2016. 1. 13..

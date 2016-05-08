@@ -2,32 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/activity_main_container">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <Button
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pannel"/>
+
+
+        <TextView
             android:id="@+id/activity_main_option"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="옵션 별도"
-            android:layout_weight="1"/>
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/activity_main_price"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:layout_marginRight="16dp"
+            android:textSize="24sp"
+            android:visibility="invisible"
+            android:text="옵션 별도"/>
 
         <TextView
             android:id="@+id/activity_main_price"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="2"
-            android:text="0"/>
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textSize="34sp"
+            android:textColor="#1c335d"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="0원"/>
 
-    </LinearLayout>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,8 +53,10 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/btn_sub"
             android:text="이사평수"/>
 
 
@@ -46,13 +64,15 @@
             android:id="@+id/activity_main_room_size"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1.5"/>
 
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/btn_sub"
             android:text="가족 수"/>
 
 
@@ -66,7 +86,7 @@
 
     </LinearLayout>
 
-    <com.ironfactory.onestopexpress.controllers.views.ProductGridView
+    <com.ironfactory.first_express.controllers.views.ProductGridView
         android:id="@+id/activity_main_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -81,9 +101,12 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/black"
+            android:textColor="@color/white"
             android:gravity="center"
+            android:textSize="24sp"
             android:text="옵션"/>
 
 
@@ -92,17 +115,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textOn="사다리차"
-            android:textOff="사다리차"/>
-
-
-        <ToggleButton
-            android:id="@+id/activity_main_move"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textOn="운반작업"
-            android:textOff="운반작업"/>
+            android:textOn="사다리차/운반"
+            android:textOff="사다리차/운반"/>
 
 
         <ToggleButton
@@ -168,75 +182,72 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
+        <Button
+            android:id="@+id/activity_main_far"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="옵션"/>
-
+            android:textColor="@color/white"
+            android:background="@color/black"
+            android:layout_margin="3dp"
+            android:text="거리"/>
 
         <Button
             android:id="@+id/activity_main_back"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textOn="사다리차"
-            android:textOff="사다리차"/>
-
+            android:layout_margin="3dp"
+            android:textColor="@color/white"
+            android:background="@color/black"/>
 
         <Button
             android:id="@+id/activity_main_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textOn="운반작업"
-            android:textOff="운반작업"/>
-
+            android:layout_margin="3dp"
+            android:textColor="@color/white"
+            android:background="#e1a59d"
+            android:text="C"/>
 
         <Button
             android:id="@+id/activity_main_equal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textOn="에어컨"
-            android:textOff="에어컨"/>
+            android:layout_margin="3dp"
+            android:textColor="@color/white"
+            android:background="#edb562"
+            android:text="="/>
 
 
     </LinearLayout>
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:weightSum="4"
         android:orientation="horizontal">
 
-
-        <Button
-            android:id="@+id/activity_main_submit"
+        <ToggleButton
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="확인"
-            android:layout_weight="1"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn=""
+            android:textOff=""/>
 
-
-        <Button
-            android:id="@+id/activity_main_detail"
+        <ToggleButton
+            android:id="@+id/activity_main_save_move"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="상세견적 받아보기"
-            android:layout_weight="1"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textOn="보관이사"
+            android:textOff="보관이사"/>
 
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
 
         <ToggleButton
             android:id="@+id/activity_main_office"
@@ -247,14 +258,16 @@
             android:textOff="사무실이사"/>
 
 
-        <ToggleButton
-            android:id="@+id/activity_main_apartment"
+        <Button
+            android:id="@+id/activity_main_detail"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:textOn="아파트/주택"
-            android:textOff="아파트/주택"/>
+            android:layout_height="match_parent"
+            android:background="#e1a59d"
+            android:text="상세견적 받아보기"
+            android:layout_margin="2dp"
+            android:textColor="@color/white"
+            android:layout_weight="1"/>
+
 
     </LinearLayout>
 

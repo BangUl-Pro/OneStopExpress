@@ -1,4 +1,4 @@
-package com.ironfactory.onestopexpress.db;
+package com.ironfactory.first_express.db;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,11 +6,10 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.ironfactory.onestopexpress.Global;
-import com.ironfactory.onestopexpress.entities.OptionEntity;
-import com.ironfactory.onestopexpress.entities.PersonEntity;
-import com.ironfactory.onestopexpress.entities.ProductEntity;
-import com.ironfactory.onestopexpress.entities.RoomEntity;
+import com.ironfactory.first_express.entities.OptionEntity;
+import com.ironfactory.first_express.entities.ProductEntity;
+import com.ironfactory.first_express.entities.RoomEntity;
+import com.ironfactory.first_express.entities.PersonEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,10 +26,8 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String OPTION_TABLE_NAME = "options";
 
 
-    private static final String COL_IMAGE = "images";
     private static final String COL_NAME = "names";
     private static final String COL_PRICE = "prices";
-    private static final String COL_CATEGORY = "category";
     private static final String COL_ROOM_SIZE = "roomSize";
     private static final String COL_NUM = "num";
 
@@ -51,7 +48,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + PRODUCT_TABLE_NAME + " (" + COL_IMAGE + " INTEGER, " + COL_NAME + " TEXT, " + COL_PRICE + "INTEGER, " + COL_CATEGORY + " INTEGER);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + PRODUCT_TABLE_NAME + " (" + COL_NAME + " TEXT, " + COL_PRICE + "INTEGER);");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + ROOM_SIZE_TABLE_NAME + " (" + COL_NAME + " TEXT, " + COL_NUM + " INTEGER);");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + PERSON_NUM_TABLE_NAME + " (" + COL_ROOM_SIZE + " INTEGER, " + COL_NAME + " TEXT, " + COL_PRICE + "INTEGER, " + COL_NUM + " INTEGER);");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + OPTION_TABLE_NAME + " (" + COL_NAME + " TEXT);");
@@ -76,12 +73,10 @@ public class DBManager extends SQLiteOpenHelper {
 
 
     public void insertProduct(ProductEntity productEntity) {
-        int image = productEntity.getImageRes();
         String name = productEntity.getName();
         int price = productEntity.getPrice();
-        int category = productEntity.getCategory();
 
-        String command = "INSERT INTO " + PRODUCT_TABLE_NAME + " values(" + image + ", '" + name + "', " + price + ", " + category + ");";
+        String command = "INSERT INTO " + PRODUCT_TABLE_NAME + " values('" + name + "', " + price + ");";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(command);
         db.close();
@@ -125,12 +120,10 @@ public class DBManager extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(command, null);
         ArrayList<ProductEntity> productEntities = new ArrayList<>();
         while (cursor.moveToNext()) {
-            int image = cursor.getInt(0);
-            String name = cursor.getString(1);
-            int price = cursor.getInt(2);
-            int category = cursor.getInt(3);
+            String name = cursor.getString(0);
+            int price = cursor.getInt(1);
 
-            ProductEntity productEntity = new ProductEntity(image, name, price, category);
+            ProductEntity productEntity = new ProductEntity(name, price);
             productEntities.add(productEntity);
         }
 
@@ -255,34 +248,35 @@ public class DBManager extends SQLiteOpenHelper {
 
 
     public void insertAll() {
-        ProductEntity productEntity = new ProductEntity(0, "장롱", 62300, 1);
+        ProductEntity productEntity = new ProductEntity(ProductEntity.WARDROBE, 62400);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "옷장", 21300, 1);
+        productEntity = new ProductEntity(ProductEntity.CLOSET, 21300);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "침대", 16200, 1);
+        productEntity = new ProductEntity(ProductEntity.BED, 16200);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "화장대", 13300, 1);
+        productEntity = new ProductEntity(ProductEntity.DRESSING_TABLE, 13300);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "책상", 13100, 1);
+        productEntity = new ProductEntity(ProductEntity.DESK, 13100);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "거실장", 11700, 1);
+        productEntity = new ProductEntity(ProductEntity.BOOK_CASE, 23800);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "쇼파", 23500, 1);
+        productEntity = new ProductEntity(ProductEntity.LIVING_ROOM_DRESSING, 11700);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "냉장고", 21700, 1);
+        productEntity = new ProductEntity(ProductEntity.SOFA, 23500);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "세탁기", 13400, 1);
+        productEntity = new ProductEntity(ProductEntity.REFRIGERATOR, 21700);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "식탁", 11200, 1);
+        productEntity = new ProductEntity(ProductEntity.WASHER, 13400);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "서랍장", 10700, 1);
+        productEntity = new ProductEntity(ProductEntity.TABLE, 11200);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "의자", 3600, 1);
+        productEntity = new ProductEntity(ProductEntity.DRAWER, 10700);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "화분", 5400, 1);
+        productEntity = new ProductEntity(ProductEntity.CHAIR, 3600);
         insertProduct(productEntity);
-        productEntity = new ProductEntity(0, "정수기", 8800, 1);
+        productEntity = new ProductEntity(ProductEntity.POT, 5400);
         insertProduct(productEntity);
+
 
 
         RoomEntity roomEntity = new RoomEntity("10평 미만", 10);
@@ -297,7 +291,7 @@ public class DBManager extends SQLiteOpenHelper {
         insertRoomSize(roomEntity);
 
 
-        PersonEntity personEntity = new PersonEntity(1, 295200, "1인", 10);
+        PersonEntity personEntity = new PersonEntity(1, 255200, "1인", 10);
         insertPersonNum(personEntity);
         personEntity = new PersonEntity(2, 312800, "2인", 10);
         insertPersonNum(personEntity);
@@ -308,13 +302,13 @@ public class DBManager extends SQLiteOpenHelper {
         personEntity = new PersonEntity(5, 554700, "5인 이상", 10);
         insertPersonNum(personEntity);
 
-        personEntity = new PersonEntity(1, 322100, "1인", 20);
+        personEntity = new PersonEntity(1, 502100, "1인", 20);
         insertPersonNum(personEntity);
         personEntity = new PersonEntity(2, 537900, "2인", 20);
         insertPersonNum(personEntity);
         personEntity = new PersonEntity(3, 551200, "3인", 20);
         insertPersonNum(personEntity);
-        personEntity = new PersonEntity(4, 667300, "4인", 20);
+        personEntity = new PersonEntity(4, 677300, "4인", 20);
         insertPersonNum(personEntity);
         personEntity = new PersonEntity(5, 893400, "5인 이상", 20);
         insertPersonNum(personEntity);
@@ -330,7 +324,7 @@ public class DBManager extends SQLiteOpenHelper {
         personEntity = new PersonEntity(5, 1000800, "5인 이상", 30);
         insertPersonNum(personEntity);
 
-        personEntity = new PersonEntity(1, 408800, "1인", 40);
+        personEntity = new PersonEntity(1, 498800, "1인", 40);
         insertPersonNum(personEntity);
         personEntity = new PersonEntity(2, 591400, "2인", 40);
         insertPersonNum(personEntity);
@@ -343,23 +337,23 @@ public class DBManager extends SQLiteOpenHelper {
 
 
         OptionEntity optionEntity = new OptionEntity();
-        optionEntity.setName(Global.OFFICE);
+        optionEntity.setName(OptionEntity.OFFICE);
         insertOption(optionEntity);
-        optionEntity.setName(Global.APARTMENT);
+        optionEntity.setName(OptionEntity.RADDER);
         insertOption(optionEntity);
-        optionEntity.setName(Global.RADDER);
+        optionEntity.setName(OptionEntity.AIR_CONDITIONAL);
         insertOption(optionEntity);
-        optionEntity.setName(Global.MOVE);
+        optionEntity.setName(OptionEntity.SYSTEM_HANGER);
         insertOption(optionEntity);
-        optionEntity.setName(Global.AIR_CONDITIONAL);
+        optionEntity.setName(OptionEntity.CLOSET);
         insertOption(optionEntity);
-        optionEntity.setName(Global.SYSTEM_HANGER);
+        optionEntity.setName(OptionEntity.BED);
         insertOption(optionEntity);
-        optionEntity.setName(Global.CLOSET);
+        optionEntity.setName(OptionEntity.BUSY);
         insertOption(optionEntity);
-        optionEntity.setName(Global.BED);
+        optionEntity.setName(OptionEntity.SAVE_MOVE);
         insertOption(optionEntity);
-        optionEntity.setName(Global.BUSY);
+        optionEntity.setName(OptionEntity.FAR);
         insertOption(optionEntity);
     }
 }

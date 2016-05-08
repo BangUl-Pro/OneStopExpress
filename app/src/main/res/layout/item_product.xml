@@ -1,69 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:weightSum="4"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="8dp">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/item_product_title"
+        android:layout_width="0dp"
+        android:layout_weight="2"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        android:text="품목"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:visibility="gone"/>
 
-        <ImageView
-            android:id="@+id/item_product_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/item_product_card1"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardBackgroundColor="@color/white">
+
+
+        <Button
+            android:id="@+id/item_product_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:background="@android:color/transparent"/>
 
 
         <TextView
-            android:id="@+id/item_product_name"
+            android:id="@+id/item_product_num1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"/>
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            android:textSize="30sp"/>
 
 
+    </android.support.v7.widget.CardView>
 
-        <LinearLayout
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/item_product_card2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardBackgroundColor="@color/white">
+
+
+        <Button
+            android:id="@+id/item_product_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:background="@android:color/transparent"/>
+
+
+        <TextView
+            android:id="@+id/item_product_num2"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/item_product_add"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@color/orange"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:text="@string/add"/>
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            android:textSize="30sp"/>
 
 
-
-            <Button
-                android:id="@+id/item_product_remove"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@color/orange"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:text="@string/remove"
-                android:visibility="gone"/>
+    </android.support.v7.widget.CardView>
 
 
-        </LinearLayout>
+    <android.support.v7.widget.CardView
+        android:id="@+id/item_product_card3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardBackgroundColor="@color/white">
 
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/item_product_btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:background="@android:color/transparent"/>
 
 
-    <TextView
-        android:id="@+id/item_product_num"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:visibility="invisible"
-        android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/item_product_num3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            android:textSize="30sp"/>
 
-    
-</FrameLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/item_product_card4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardBackgroundColor="@color/white">
+
+
+        <Button
+            android:id="@+id/item_product_btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:background="@android:color/transparent"/>
+
+
+        <TextView
+            android:id="@+id/item_product_num4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            android:textSize="30sp"/>
+
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

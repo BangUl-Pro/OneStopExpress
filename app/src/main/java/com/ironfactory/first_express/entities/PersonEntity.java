@@ -1,9 +1,11 @@
-package com.ironfactory.onestopexpress.entities;
+package com.ironfactory.first_express.entities;
+
+import java.io.Serializable;
 
 /**
  * Created by IronFactory on 2016. 1. 13..
  */
-public class PersonEntity {
+public class PersonEntity implements Serializable {
     private int num;
     private int price;
     private String name;
